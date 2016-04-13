@@ -26,7 +26,7 @@
     'use strict';
 
     $.widget('jFramework.fileuploader', {
-        // Options
+        // Options 
         options: {
             url: null,
             dropzone: null,
@@ -62,8 +62,13 @@
                                             // Feature detection for all other devices:
         ).test(window.navigator.userAgent) || $('<input type="file">').prop('disabled')),
         
-        // Define format
-        // @source: Ash Searle (http://hexmen.com/blog/)
+        /**
+         * Format error messages
+         * @source: Ash Searle (http://hexmen.com/blog/)
+         * @param {String} message - Message to be formated
+         * @param {String|Number|Float} parameters... - All parameters
+         * @returns {String}
+         */
         _format: function () {
             var regex = /%%|%(\d+\$)?([\-+\'#0 ]*)(\*\d+\$|\*|\d+)?(?:\.(\*\d+\$|\*|\d+))?([scboxXuideEfFgG])/g;
             var a = arguments;
@@ -233,7 +238,10 @@
             return format.replace(regex, doFormat);
         },
 
-        // Define validate function
+        /**
+         * Validate file list before uploaded         
+         * @param {Object} uploadList - List of files to be validated
+         */
         _validate: function (uploadList) {
             var that = this;
             // Loop
@@ -277,7 +285,13 @@
             });
         },
         
-        // Define Image Check function
+        /**
+         * Validate image    
+         * @param {Object} that - this Object
+         * @param {Object} file - File Object
+         * @param {Number} width - Image width
+         * @param {Number} height - Image height
+         */
         _imageCheck: function (that, file, width, height) {
             // Check if maxWidth is required
             if (that.options.maxWidth > 0 && that.options.maxHeight > 0) {
@@ -317,7 +331,10 @@
             }
         },
 
-        // Generate an Unique ID
+        /**
+         * Generate an Unique ID        
+         * @returns {String}
+         */
         _getGUID: function (){
             var d = new Date().getTime();
             if(window.performance && typeof window.performance.now === "function"){
@@ -331,22 +348,10 @@
             return uuid;
         },
 
-
         /**
-         * Calculate the sum of one object
-         * @param {Object} object
-         * @returns {Number}
+         * Upload file
+         * @param {object} file - File Object     
          */
-        _sum: function (object, key) {
-            var total = 0;
-            $.each(object, function (index, item) {
-                total += parseInt(item[key]);
-            });
-
-            return total;
-        },
-
-        // Define function to upload a file
         _uploadFile: function (file) {
             // Callback
             this._trigger('file_upload_started', null, {file: file});
@@ -466,7 +471,10 @@
             });
         },
 
-        // Define function to add files to queue
+        /**
+         * Add file to queue
+         * @param {object} file - File Object
+         */
         _addFileToQueue: function (file) {
             // Get unique ID
             var uid = this._getGUID(); 
@@ -484,7 +492,10 @@
             }
         },
 
-        // Define proccess queue function
+        /**
+         * Run the queue (Process the WaitList to be uploaded)
+         * @param {object} that - this Object
+         */
         _proccessQueue: function (that) {
             // Check if queue is not empty
             if (Object.keys(that.queueWaitList).length) {             
@@ -512,7 +523,9 @@
             }                           
         },
 
-        // Define function to start upload proccess
+        /**
+         * Start upload proccess
+         */
         start: function () {
             // Check if upload was not started
             if (!this.started) {
@@ -528,7 +541,9 @@
             }
         },   
         
-        // Pause upload
+        /**
+         * Pause upload progress
+         */
         stop: function () {
             // Clear interval
             clearInterval(this.queueIntervalId);
@@ -542,7 +557,9 @@
             this.queueUploading = {};
         }, 
 
-        // Stop upload and abort all requests
+        /**
+         * Abort all Ajax Requests
+         */
         abortAll: function () {
             // Clear interval
             clearInterval(this.queueIntervalId);
@@ -568,20 +585,30 @@
             
             // Clear interval
             clearInterval(this.queueIntervalId);   
-            
-            //this._destroy();
         },
         
+        /**
+         * Set Option
+         * @param {string} key
+         * @param {any} value
+         */
         _setOption: function( key, value ) {
             this.options[ key ] = value;
-            //this._update(); 
         },
         
+        /**
+         * Disable default drag
+         * @param {object} event
+         */
         _drag: function (event) {
             event.stopPropagation();
             event.preventDefault();
        },
        
+       /**
+        * Calculate total of the files
+        * @returns {Number}
+        */
         _calcTotal: function (){
             // Loop by all files
             var that = this;
@@ -604,9 +631,7 @@
         
         
         /**
-         * Calculate the percentage of two objects
-         * @param {Object} object1
-         * @param {Object} object2
+         * Calculate total of the files that was sent already
          * @returns {Number}
          */
         _calcTotalSent: function () {
@@ -627,6 +652,9 @@
             return this._totalSentSize;
         },
 
+        /**
+         * Initialize widget
+         */
         _create: function() {
             // Define URL
             this.url = window.URL || window.webkitURL;
@@ -661,6 +689,10 @@
                });
             }
         },
+        
+        /**
+         * Destroy this plugin (Reset)
+         */
         _destroy: function () {
             // Define URL
             this.url = window.URL || window.webkitURL;
