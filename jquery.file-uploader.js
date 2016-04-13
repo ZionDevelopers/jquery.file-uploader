@@ -407,7 +407,7 @@
                         if (Object.keys(that.queueUploading).length === 0 && Object.keys(that.queueWaitList).length === 0) { 
 
                             // Callback end
-                            that._trigger('done', null, {queue: that.queueCompleted});
+                            that._trigger('done', null, {queue: that.queueCompleted, time: (new Date()).toLocaleString()});
                             
                             // Define state
                             that.started = false;
@@ -415,7 +415,7 @@
                             
                             // Calc total size of files
                             that._calcTotal();
-                            // Calc total size of sent files 
+                            // Calc total size of sent files
                             that._calcTotalSent();
                             // Calc total 
                             that._totalPercentage = ((that._totalSentSize / that._totalSize)*100).toFixed(2);
@@ -518,7 +518,7 @@
             if (!this.started) {
                 // Start process
                 this.started = true;
-                this._trigger('started', null, null);
+                this._trigger('started', null, {time: (new Date()).toLocaleString()});
                 var that = this;
 
                 // Run queue                 
@@ -535,7 +535,7 @@
             // Stop
             this.started = false;
             // Trigger stop
-            this._trigger('stopped', null, null);
+            this._trigger('stopped', null, {time: (new Date()).toLocaleString()});
             
             this.queueWaitList = {};
             this.queueCompleted = {};
