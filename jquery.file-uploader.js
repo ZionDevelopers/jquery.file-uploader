@@ -26,7 +26,9 @@
     'use strict';
 
     $.widget('jFramework.fileuploader', {
-        // Options 
+        /**
+         * Widget default options
+         */
         options: {
             url: null,
             dropzone: null,
@@ -46,13 +48,17 @@
             }
         },  
         
-        // Total stats
+        /**
+         * Total Size Stats
+         */
         _totalSize: 0,
         _totalSentSize: 0,
         _totalPercentage: 0,
         
-        // Detect file input support, based on
-        // http://viljamis.com/blog/2012/file-upload-support-on-mobile/
+        /**
+         * Detect file input support, based on
+         * @see http://viljamis.com/blog/2012/file-upload-support-on-mobile/
+         */
         _fileInputSupport: !(new RegExp(
             // Handle devices which give false positives for the feature detection:
             '(Android (1\\.[0156]|2\\.[01]))' +
@@ -64,7 +70,8 @@
         
         /**
          * Format error messages
-         * @source: Ash Searle (http://hexmen.com/blog/)
+         * @author Ash Searle
+         * @see http://hexmen.com/blog/
          * @param {String} message - Message to be formated
          * @param {String|Number|Float} parameters... - All parameters
          * @returns {String}
@@ -603,7 +610,7 @@
         _drag: function (event) {
             event.stopPropagation();
             event.preventDefault();
-       },
+        },
        
        /**
         * Calculate total of the files
@@ -628,8 +635,7 @@
             
             return this._totalSize;
         },
-        
-        
+                
         /**
          * Calculate total of the files that was sent already
          * @returns {Number}
@@ -711,3 +717,4 @@
         }
     });
 }));
+ 
