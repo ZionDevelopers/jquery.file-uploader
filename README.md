@@ -1,5 +1,5 @@
 # jQuery File Uploader
-This is an easy to use Ajax File Uploader.
+This is an easy to use, lightweight Ajax File Uploader.
 
 ###Features:
 
