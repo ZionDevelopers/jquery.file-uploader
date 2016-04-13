@@ -1,10 +1,18 @@
 # jQuery File Uploader
-This is an easy to use Ajax File Uploader with support for validation of file size, image width and image height, file extension check, DropZone support, Parallel (Concurrent) file uploads, You can upload one by one or how many you want!.
-It also have customizable error messages, and lots of event triggers to get the status of the upload!
+This is an easy to use Ajax File Uploader.
 
+###Features:
 
-Code Example:
-```JS
+* File size validation
+* Image width and image height
+* File extension check
+* DropZone support
+* Parallel (Concurrent) file uploads: You can upload one by one or how many you want!
+* Customizable error messages
+* Lots of event triggers to get the status of the upload!
+
+###Example:
+```javascript
  $('input#file_uploader_input').fileuploader({
         url: '/myupload/upload.php?album_id='+$('form#my-form').data('id'),
         dropzone: 'div#my-dropzone',
@@ -39,3 +47,16 @@ Code Example:
             $('div#cancelAllUploads').fadeOut();
         });
 ```
+### Events
+* started: Upload process started. `event: eventObject, data: {time: '13/04/2016 10:49:17'}`
+* stopped: Upload process stopped. `event: eventObject, data: {time: '13/04/2016 10:50:20'}`
+* file_add: A file was added. `event: eventObject, data: {file: fileObject, error: 'Error XYZ'}`
+* file_upload_started: A file upload was started. `event: eventObject, data: {file: fileObject}`
+* file_upload_finished: A file upload has finished. `event: eventObject, data: {queue: queueObject}`
+* file_progress: Progress of a file upload. `event: eventObject, data: {sent: 1, total: 2, file: fileObject}}`
+* progress: Upload progress of all files. `event: eventObject, data: {sent: 1, total: 2, queue: queueObject, percentage: 50, uploadSent: 1000, uploadTotal: 2000}`
+* file_upload_aborted: File upload has been aborted. `event: eventObject, data: {file: fileObject}`
+* aborted: Upload process has been aborted. `event: eventObject, data: {queue: queueObject}`
+* done: Upload process has been finished. `event: eventObject, data: {queue: queueObject, time: '13/04/2016 10:51:25'}`
+
+All events trigger sends event and data object, Each event my vary the objects.
