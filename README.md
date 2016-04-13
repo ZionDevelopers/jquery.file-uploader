@@ -12,6 +12,28 @@ This is an easy to use Ajax File Uploader.
 * Customizable error messages
 * Lots of event triggers to get the status of the upload!
 
+###Options
+```javascript
+{
+	url: '/upload-url', // URL to send the files
+	dropzone: 'div#my-dropzone', // jQuery Selector of the dropzone element
+	autoUpload: true, // Automatically upload files as they are added
+	acceptablefileExtensionsRegex: /(gif|jpe?g|png)$/i, // REGEX of the file extensions that you will accept
+	acceptablefileExtensionsReadable: 'gif, jpeg, jpg or png', // Readable text of extensions allowed, Used on the error messages
+	maxFileSize: 2*1024*1024, // Max file size allowed (IN BYTES): 2MB
+	maxWidth: 0, // Max image with
+	maxHeight: 0, // Max image height
+	limitConcurrentUploadRequests: 5, // Limit of parallel (Concurrent) ajax file upload  
+	queueInterval: 10, // Interval of the queue processor
+	messages: { // Error messages
+		fileTooBigSize: 'File %s is too big, Send files smaller than %dMB!',
+		fileTypeNotAllowed: 'File %s type is %s and is not allowed!, Send only %s!',
+		fileTooBigWidth: 'File %s is too big, Send images equal or lower than %d pixels of width!',
+		fileTooBigHeight: 'File %s is too big, Send images equal or lower than %d pixels of height!'
+	}
+}
+```
+
 ###Example:
 ```javascript
  $('input#file_uploader_input').fileuploader({
