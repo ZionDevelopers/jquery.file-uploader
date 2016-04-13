@@ -3,9 +3,10 @@ This is an easy to use Ajax File Uploader.
 
 ###Features:
 
-* File size validation
-* Image width and image height
-* File extension check
+* File Validation:
+  * File size
+  * Image width and image height
+  * File extension check
 * DropZone support
 * Parallel (Concurrent) file uploads: You can upload one by one or how many you want!
 * Customizable error messages
