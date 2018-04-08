@@ -1,7 +1,7 @@
 # jQuery File Uploader
 This is an easy to use, lightweight Ajax File Uploader.
 
-###Features:
+### Features:
 
 * File Validation:
   * File size
@@ -12,7 +12,7 @@ This is an easy to use, lightweight Ajax File Uploader.
 * Customizable error messages
 * Lots of event triggers to get the status of the upload!
 
-###Options
+### Options
 ```javascript
 {
 	url: '/upload-url', // URL to send the files
@@ -34,7 +34,7 @@ This is an easy to use, lightweight Ajax File Uploader.
 }
 ```
 
-###Example:
+### Example:
 ```javascript
  $('input#file_uploader_input').fileuploader({
         url: '/myupload/upload.php?album_id='+$('form#my-form').data('id'),
