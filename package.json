@@ -1,0 +1,23 @@
+{
+  "name": "jquery-file-uploader",
+  "version": "2.0.0",
+  "description": "This is an easy to use, lightweight Ajax File Uploader.",
+  "main": "jquery.file-uploader.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZionDevelopers/jquery.file-uploader.git"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "author": "Júlio C. Oliveira",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "bugs": {
+    "url": "https://github.com/ZionDevelopers/jquery.file-uploader/issues"
+  },
+  "homepage": "https://github.com/ZionDevelopers/jquery.file-uploader#readme"
+}
